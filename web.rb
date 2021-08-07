@@ -2,13 +2,15 @@ require 'sinatra'
 require_relative 'app/controllers/user_controller'
 require_relative 'app/models/response'
 
-get '/' do
+get '/users' do
     content_type :json
     controller = UserController.new
     controller.get_all_users
 end
 
 post '/user' do
+    content_type :json
+    
     name = params["name"]
     email = params["email"]
     password = params["password"]
