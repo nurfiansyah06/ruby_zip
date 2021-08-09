@@ -12,6 +12,7 @@ class User
         @bio = params[:bio]
     end
 
+    # get all users
     def self.get_all_users
         client = create_db_client
         rawData = client.query("SELECT * FROM users")
@@ -24,6 +25,7 @@ class User
         return response.response_api
     end
 
+    # save or register user
     def save_user
         client = create_db_client
         client.query("INSERT INTO users(name, email, password, bio) VALUES('#{@name}', '#{@email}', '#{@password}', '#{@bio}')")
